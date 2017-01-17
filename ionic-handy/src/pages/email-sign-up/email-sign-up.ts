@@ -22,7 +22,7 @@ export class EmailSignUpPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignUpPage');
+    console.log('ionViewDidLoad EmailSignUpPage');
   }
 
   onSubmitClicked(): void {

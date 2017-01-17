@@ -2,8 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen, AppVersion } from 'ionic-native';
 
+import { AngularFire } from 'angularfire2';
+
 import { NoteListPage } from '../pages/note-list/note-list';
 import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
+import { EmailLoginPage } from '../pages/email-login/email-login';
+import { SettingsPage } from '../pages/settings/settings';
 
 
 @Component({
@@ -12,18 +16,20 @@ import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = EmailSignUpPage;
+  showMenu = false;
+  rootPage: any = EmailLoginPage;
 
   pages: Array<{title: string, component: any}>;
 
   versionNumber = 'not available';
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, public af: AngularFire) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Note', component: NoteListPage }
+      { title: 'Note', component: NoteListPage },
+      { title: 'Settings', component: SettingsPage },
     ];
 
   }
@@ -45,12 +51,22 @@ export class MyApp {
         console.log('not a cordova platform');
       }
 
+      this.af.auth.subscribe(user => {
+        console.log("MyApp : user - " + JSON.stringify(user));
+        if (user != null && user.auth.emailVerified) {
+          this.showMenu = true;
+          this.nav.setRoot(NoteListPage)
+        } else {
+          this.showMenu = false;
+          this.nav.setRoot(EmailLoginPage)
+        }
+      });
+
+
     });
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }
