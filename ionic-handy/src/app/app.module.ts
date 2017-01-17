@@ -7,11 +7,13 @@ import { AngularFireModule } from 'angularfire2';
 
 import { FirebaseConfig } from './settings';
 import { NoteListPage } from '../pages/note-list/note-list';
+import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 
 @NgModule({
   declarations: [
     MyApp,
-    NoteListPage
+    NoteListPage,
+    EmailSignUpPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -20,7 +22,8 @@ import { NoteListPage } from '../pages/note-list/note-list';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    NoteListPage
+    NoteListPage,
+    EmailSignUpPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

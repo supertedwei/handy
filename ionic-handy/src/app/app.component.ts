@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen, AppVersion } from 'ionic-native';
 
 import { NoteListPage } from '../pages/note-list/note-list';
+import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { NoteListPage } from '../pages/note-list/note-list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = NoteListPage;
+  rootPage: any = EmailSignUpPage;
 
   pages: Array<{title: string, component: any}>;
 
