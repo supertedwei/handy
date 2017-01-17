@@ -10,6 +10,7 @@ import { NoteListPage } from '../pages/note-list/note-list';
 import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
+import { SplashPage } from '../pages/splash/splash';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SettingsPage } from '../pages/settings/settings';
     NoteListPage,
     EmailSignUpPage,
     EmailLoginPage,
-    SettingsPage
+    SettingsPage,
+    SplashPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -29,7 +31,8 @@ import { SettingsPage } from '../pages/settings/settings';
     NoteListPage,
     EmailSignUpPage,
     EmailLoginPage,
-    SettingsPage
+    SettingsPage,
+    SplashPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

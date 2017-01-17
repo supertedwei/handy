@@ -5,9 +5,9 @@ import { StatusBar, Splashscreen, AppVersion } from 'ionic-native';
 import { AngularFire } from 'angularfire2';
 
 import { NoteListPage } from '../pages/note-list/note-list';
-import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
+import { SplashPage } from '../pages/splash/splash';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   showMenu = false;
-  rootPage: any = EmailLoginPage;
+  rootPage: any = SplashPage;
 
   pages: Array<{title: string, component: any}>;
 
