@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 
 import { FirebaseConfig } from './settings';
 import { NoteListPage } from '../pages/note-list/note-list';
+import { NoteAddPage } from '../pages/note-add/note-add';
 import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
@@ -19,7 +20,8 @@ import { SplashPage } from '../pages/splash/splash';
     EmailSignUpPage,
     EmailLoginPage,
     SettingsPage,
-    SplashPage
+    SplashPage,
+    NoteAddPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -32,7 +34,8 @@ import { SplashPage } from '../pages/splash/splash';
     EmailSignUpPage,
     EmailLoginPage,
     SettingsPage,
-    SplashPage
+    SplashPage,
+    NoteAddPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
