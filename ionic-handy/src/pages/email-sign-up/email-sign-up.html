@@ -28,7 +28,8 @@
 
   </ion-list>
 
-  <button ion-button *ngIf="!waiting" (click)="onSubmitClicked()">Submit</button>
+  <button ion-button *ngIf="!waiting" (click)="onSignupClicked()">Sign Up</button>
+  <button ion-button outline *ngIf="!waiting" (click)="onLoginClicked()">Login</button>
 
   <ion-spinner *ngIf="waiting"></ion-spinner>
 

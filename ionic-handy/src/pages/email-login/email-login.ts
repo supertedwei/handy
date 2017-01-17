@@ -3,6 +3,8 @@ import { NavController, NavParams, AlertController, ToastController } from 'ioni
 
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
+import { EmailSignUpPage } from '../email-sign-up/email-sign-up'
+
 @Component({
   selector: 'page-email-login',
   templateUrl: 'email-login.html'
@@ -24,7 +26,11 @@ export class EmailLoginPage {
     console.log('ionViewDidLoad SignUpPage');
   }
 
-  onSubmitClicked(): void {
+  onSignupClicked() {
+    this.navCtrl.setRoot(EmailSignUpPage);
+  }
+
+  onLoginClicked(): void {
     console.log("onSubmitClicked : " + this.email);
     if (this.email.length == 0) {
       this.showError('Email is empty');
