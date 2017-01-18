@@ -3,8 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-import { NoteAddPage } from '../note-add/note-add'
-import { NoteViewPage } from '../note-view/note-view'
+import { NoteAddPage } from '../note/note-add'
+import { NoteViewPage } from '../note/note-view'
 
 
 @Component({

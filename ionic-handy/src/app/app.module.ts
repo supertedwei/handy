@@ -6,9 +6,9 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 
 import { FirebaseConfig } from './config';
-import { NoteListPage } from '../pages/note-list/note-list';
-import { NoteAddPage } from '../pages/note-add/note-add';
-import { NoteViewPage } from '../pages/note-view/note-view';
+import { NoteListPage } from '../pages/note/note-list';
+import { NoteAddPage } from '../pages/note/note-add';
+import { NoteViewPage } from '../pages/note/note-view';
 import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
