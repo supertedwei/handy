@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { NoteAddPage } from '../note-add/note-add'
+import { NoteViewPage } from '../note-view/note-view'
 
 
 @Component({
@@ -16,7 +17,7 @@ export class NoteListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public af: AngularFire) {
-    this.list = this.af.database.list('items');
+    this.list = this.af.database.list('/items');
   }
 
   ionViewDidLoad() {
@@ -25,6 +26,13 @@ export class NoteListPage {
 
   onAddClicked() {
     this.navCtrl.push(NoteAddPage);
+  }
+
+  onItemClick(item) {
+    console.log('item - ' + JSON.stringify(item));
+    this.navCtrl.push(NoteViewPage, {
+      key: item.$key
+    });
   }
 
 }

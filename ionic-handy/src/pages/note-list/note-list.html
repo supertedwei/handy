@@ -21,7 +21,7 @@
 
    <ion-list>
 
-    <ion-item *ngFor="let item of list | async">
+    <ion-item *ngFor="let item of list | async" (click)="onItemClick(item)">
       {{item.title}}
     </ion-item>
 
