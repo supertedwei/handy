@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 
-import { FirebaseConfig } from './settings';
+import { FirebaseConfig } from './config';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { NoteAddPage } from '../pages/note-add/note-add';
 import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
