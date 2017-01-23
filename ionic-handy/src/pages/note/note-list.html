@@ -21,9 +21,15 @@
 
    <ion-list>
 
-    <ion-item *ngFor="let item of list | async" (click)="onItemClick(item)">
-      {{item.title}}
-    </ion-item>
+    <!-- Sliding item -->
+    <ion-item-sliding *ngFor="let item of list | async">
+      <ion-item (click)="onItemClicked(item)">
+        {{item.title}}
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="primary" (click)="onDeleteClicked(item)">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
 
   </ion-list>
 

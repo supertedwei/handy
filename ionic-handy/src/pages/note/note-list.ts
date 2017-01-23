@@ -28,11 +28,15 @@ export class NoteListPage {
     this.navCtrl.push(NoteAddPage);
   }
 
-  onItemClick(item) {
+  onItemClicked(item) {
     console.log('item - ' + JSON.stringify(item));
     this.navCtrl.push(NoteViewPage, {
       key: item.$key
     });
+  }
+
+  onDeleteClicked(item) {
+    this.af.database.object("/items/" + item.$key).remove();
   }
 
 }
