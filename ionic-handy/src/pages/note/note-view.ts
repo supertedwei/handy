@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
-import { NoteUtil } from './note-util'
+import { NoteUtil, NoteModel } from './note-util'
 import { NoteEditPage } from './note-edit';
 
 @Component({
@@ -14,7 +14,7 @@ export class NoteViewPage {
 
   key: string
   itemObservable: FirebaseObjectObservable<any>
-  item = {title: "", content: ""}
+  item = new NoteModel()
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public af: AngularFire) {
