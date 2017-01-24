@@ -6,6 +6,8 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { NoteAddPage } from '../note/note-add'
 import { NoteViewPage } from '../note/note-view'
 
+import { NoteUtil } from './note-util'
+
 
 @Component({
   selector: 'page-note-list',
@@ -17,7 +19,7 @@ export class NoteListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public af: AngularFire) {
-    this.list = this.af.database.list('/items');
+    this.list = NoteUtil.getNoteList(this.af);
   }
 
   ionViewDidLoad() {
@@ -36,7 +38,7 @@ export class NoteListPage {
   }
 
   onDeleteClicked(item) {
-    this.af.database.object("/items/" + item.$key).remove();
+    NoteUtil.getNote(this.af, item.$key).remove();
   }
 
 }

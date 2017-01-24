@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { AngularFire } from 'angularfire2';
 
+import { NoteUtil } from './note-util'
+
 @Component({
   selector: 'page-note-add',
   templateUrl: 'note-add.html'
@@ -21,7 +23,7 @@ export class NoteAddPage {
 
   onSaveClicked() {
     console.log("onSaveClicked : " + this.title)
-    const items = this.af.database.list('items')
+    const items = NoteUtil.getNoteList(this.af)
     items.push({title: this.title, content: this.content});
     this.navCtrl.pop();
   }
