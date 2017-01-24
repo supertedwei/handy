@@ -5,7 +5,7 @@
 
     <ion-buttons end>
       <button ion-button icon-only (click)="onSaveClicked()">
-        <ion-icon name="checkmark"></ion-icon>
+        <ion-icon name="done-all"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -19,12 +19,12 @@
 
     <ion-item>
       <ion-label stacked>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="title"></ion-input>
+      <ion-input type="text" [(ngModel)]="item.title"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Content</ion-label>
-      <ion-textarea type="text" [(ngModel)]="content"></ion-textarea>
+      <ion-textarea type="text" [(ngModel)]="item.content"></ion-textarea>
     </ion-item>
 
   </ion-list>

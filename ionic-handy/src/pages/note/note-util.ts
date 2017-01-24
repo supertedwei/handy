@@ -21,4 +21,13 @@ export class NoteUtil {
     static getNote(af: AngularFire, key: string): FirebaseObjectObservable<any> {
         return af.database.object(this.getNoteUrl(af, key))
     }
+
+    static push(af: AngularFire, value: any) {
+        this.getNoteList(af).push(value)
+    }
+}
+
+export class NoteModel {
+    title:string = ""
+    content:string = ""
 }

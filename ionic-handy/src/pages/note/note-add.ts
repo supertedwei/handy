@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { AngularFire } from 'angularfire2';
 
-import { NoteUtil } from './note-util'
+import { NoteUtil, NoteModel} from './note-util'
 
 @Component({
   selector: 'page-note-add',
@@ -11,8 +11,7 @@ import { NoteUtil } from './note-util'
 })
 export class NoteAddPage {
 
-  title:string = ""
-  content:string = ""
+  item = new NoteModel()
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public af: AngularFire) {}
@@ -22,9 +21,8 @@ export class NoteAddPage {
   }
 
   onSaveClicked() {
-    console.log("onSaveClicked : " + this.title)
-    const items = NoteUtil.getNoteList(this.af)
-    items.push({title: this.title, content: this.content});
+    console.log("onSaveClicked : " + this.item.title)
+    NoteUtil.push(this.af, this.item)
     this.navCtrl.pop();
   }
 
