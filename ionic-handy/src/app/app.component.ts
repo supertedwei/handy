@@ -8,6 +8,7 @@ import { NoteListPage } from '../pages/note/note-list';
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
 import { SplashPage } from '../pages/splash/splash';
+import { User } from '../common/user';
 
 
 @Component({
@@ -55,9 +56,12 @@ export class MyApp {
         console.log("MyApp : user - " + JSON.stringify(user));
         if (user != null && user.auth.emailVerified) {
           this.showMenu = true;
+          User.uid = user.auth.uid
+          User.email = user.auth.email
           this.nav.setRoot(NoteListPage)
         } else {
           this.showMenu = false;
+          User.reset();
           this.nav.setRoot(EmailLoginPage)
         }
       });

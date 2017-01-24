@@ -1,13 +1,13 @@
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
+import { User } from '../../common/user'
+
 export class NoteUtil {
 
     static urlNoteItemList = "/note_list"
 
     private static getNoteListUrl(af: AngularFire): string {
-        let uid = af.auth.getAuth().uid
-        console.log("uid : " + uid)
-        return uid + this.urlNoteItemList
+        return User.uid + this.urlNoteItemList
     }
 
     static getNoteList(af: AngularFire): FirebaseListObservable<any> {
