@@ -4,13 +4,12 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 import { NoteUtil } from './note-util'
-import { NoteEditPage } from './note-edit';
 
 @Component({
-  selector: 'page-note-view',
-  templateUrl: 'note-view.html'
+  selector: 'page-note-edit',
+  templateUrl: 'note-edit.html'
 })
-export class NoteViewPage {
+export class NoteEditPage {
 
   key: string
   itemObservable: FirebaseObjectObservable<any>
@@ -29,13 +28,13 @@ export class NoteViewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NoteViewPage');
+    console.log('ionViewDidLoad NoteEditPage');
   }
 
   onEditClicked() {
-    this.navCtrl.push(NoteEditPage, {
-      key: this.key
-    });
+    console.log("onEditClicked : " + this.item.title)
+    this.itemObservable.set(this.item)
+    this.navCtrl.pop();
   }
 
 }

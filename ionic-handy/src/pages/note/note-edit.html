@@ -1,11 +1,11 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Note View</ion-title>
+    <ion-title>Edit Note</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="onEditClicked()">
-        <ion-icon name="create"></ion-icon>
+        <ion-icon name="done-all"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -20,12 +20,12 @@
 
     <ion-item>
       <ion-label stacked>Title</ion-label>
-      <ion-label >{{item.title}}</ion-label>
+      <ion-input type="text" [(ngModel)]="item.title"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Content</ion-label>
-      <ion-label >{{item.content}}</ion-label>
+      <ion-textarea type="text" [(ngModel)]="item.content"></ion-textarea>
     </ion-item>
 
   </ion-list>
