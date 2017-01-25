@@ -14,6 +14,7 @@ import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
 import { SplashPage } from '../pages/splash/splash';
+import { ElasticModule } from 'angular2-elastic';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SplashPage } from '../pages/splash/splash';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(FirebaseConfig)
+    AngularFireModule.initializeApp(FirebaseConfig),
+    ElasticModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
