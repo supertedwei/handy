@@ -7,7 +7,7 @@ export class NoteUtil {
     static urlNoteItemList = "/note_list"
 
     private static getNoteListUrl(af: AngularFire): string {
-        return User.uid + this.urlNoteItemList
+        return "/note/users/" + User.uid + this.urlNoteItemList
     }
 
     static getNoteList(af: AngularFire): FirebaseListObservable<any> {
