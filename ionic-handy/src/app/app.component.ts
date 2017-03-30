@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen, AppVersion } from 'ionic-native';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { AppVersion } from '@ionic-native/app-version';
 
 import { AngularFire } from 'angularfire2';
 
@@ -24,7 +26,9 @@ export class MyApp {
 
   versionNumber = 'not available';
 
-  constructor(public platform: Platform, public af: AngularFire) {
+  constructor(public platform: Platform, public statusBar: StatusBar, 
+      public splashScreen: SplashScreen, public af: AngularFire,
+      public appVersion: AppVersion) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -39,12 +43,12 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
 
 
       if (this.platform.is('cordova')) {
-        AppVersion.getVersionNumber().then((s) => {
+        this.appVersion.getVersionNumber().then((s) => {
           this.versionNumber = s;
           console.log('versionNumber : ' + this.versionNumber);
         })

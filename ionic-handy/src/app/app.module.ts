@@ -1,6 +1,9 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { AppVersion } from '@ionic-native/app-version';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -45,6 +48,11 @@ import { ElasticModule } from 'angular2-elastic';
     SettingsPage,
     SplashPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    StatusBar,
+    SplashScreen,
+    AppVersion
+  ]
 })
 export class AppModule {}
