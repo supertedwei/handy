@@ -18,14 +18,13 @@
 
   <ion-list>
 
-    <ion-card>
-      <ion-card-header>
-        {{item.title}}
-      </ion-card-header>
-      <ion-card-content>
-        <pre>{{item.content}}</pre>
-      </ion-card-content>
-    </ion-card>
+    <ion-item>
+      <ion-input id='in_title' readonly='true' type="text" [(ngModel)]="item.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea id='in_content' readonly='true' fz-elastic type="text" [(ngModel)]="item.content"></ion-textarea>
+    </ion-item>
 
     <ion-item>
       <button id='btn_delete' ion-button (click)="onDeleteClicked()">
