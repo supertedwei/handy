@@ -24,7 +24,7 @@ export class MyApp {
 
   pages: Array<{id: string, title: string, component: any}>;
 
-  versionNumber = 'not available';
+  versionNumber = 'Web 1.0';
 
   constructor(public platform: Platform, public statusBar: StatusBar, 
       public splashScreen: SplashScreen, public af: AngularFire,
