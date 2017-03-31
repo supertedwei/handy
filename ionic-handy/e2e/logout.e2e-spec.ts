@@ -1,6 +1,6 @@
 import { browser, element, by, ElementFinder, ExpectedConditions } from 'protractor';
 
-describe('User shall be able to logout system', () => {
+describe('User can logout system', () => {
 
   beforeEach(() => {
     console.log("beforeEach")
@@ -16,12 +16,9 @@ describe('User shall be able to logout system', () => {
   it('Logout', () => {
 
     browser.wait(ExpectedConditions.visibilityOf(element(by.css('[menutoggle]'))), 5000).then(() => {
-      element(by.css('[menutoggle]')).click().then(() => {
+      element(by.id('menu_settings')).click().then(() => {
         browser.driver.sleep(1000)
-        element(by.id('menu_settings')).click().then(() => {
-          browser.driver.sleep(1000)
-          element(by.id('btn_logout')).click().then(() => {
-          })
+        element(by.id('btn_logout')).click().then(() => {
         })
       })
     })

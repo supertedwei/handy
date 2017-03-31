@@ -41,8 +41,8 @@ exports.config = {
         browser.wait(ExpectedConditions.presenceOf(element(by.css('ion-menu'))), 5000).then(() => {
             console.log("ion-menu found")
             browser.getTitle().then((title) => {
-            console.log("title : " + title)
-            expect(title).toEqual('Note List');
+                console.log("title : " + title)
+                expect(title).toEqual('Note List');
             });
         })
     });
