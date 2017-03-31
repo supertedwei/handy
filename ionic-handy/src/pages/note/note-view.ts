@@ -38,4 +38,9 @@ export class NoteViewPage {
     });
   }
 
+  onDeleteClicked() {
+    NoteUtil.getNote(this.af, this.key).remove();
+    this.navCtrl.pop();
+  }
+
 }

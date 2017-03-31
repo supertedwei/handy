@@ -4,7 +4,7 @@
     <ion-title>Note View</ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only (click)="onEditClicked()">
+      <button id='btn_edit' ion-button icon-only (click)="onEditClicked()">
         <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,7 +14,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content id='node_view_page' padding>
 
   <ion-list>
 
@@ -26,6 +26,12 @@
         <pre>{{item.content}}</pre>
       </ion-card-content>
     </ion-card>
+
+    <ion-item>
+      <button id='btn_delete' ion-button (click)="onDeleteClicked()">
+        Delete
+      </button>
+    </ion-item>
 
   </ion-list>
 

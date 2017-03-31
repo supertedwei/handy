@@ -4,7 +4,7 @@
     <ion-title>Create Note</ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only (click)="onSaveClicked()">
+      <button id='btn_save' ion-button icon-only (click)="onSaveClicked()">
         <ion-icon name="done-all"></ion-icon>
       </button>
     </ion-buttons>
@@ -13,18 +13,18 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content id='node_add_page' padding>
 
   <ion-list>
 
     <ion-item>
       <ion-label stacked>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="item.title"></ion-input>
+      <ion-input id='in_title' type="text" [(ngModel)]="item.title"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Content</ion-label>
-      <ion-textarea fz-elastic type="text" [(ngModel)]="item.content"></ion-textarea>
+      <ion-textarea id='in_content' fz-elastic type="text" [(ngModel)]="item.content"></ion-textarea>
     </ion-item>
 
   </ion-list>

@@ -3,13 +3,10 @@ import { browser, element, by, ElementFinder, ExpectedConditions } from 'protrac
 describe('User can logout system', () => {
 
   beforeEach(() => {
-    console.log("beforeEach")
-    browser.get('');
     //browser.driver.sleep(5000)
   });
 
   afterEach(() => {
-    console.log("afterEach")
     //browser.driver.sleep(5000)
   })
 
@@ -35,11 +32,8 @@ describe('User can logout system', () => {
         .perform()
 
     element(by.id('btn_login')).click().then(() => {
-      console.log("login clicked")
       browser.wait(ExpectedConditions.presenceOf(element(by.css('ion-menu'))), 5000).then(() => {
-        console.log("ion-menu found")
         browser.getTitle().then((title) => {
-          console.log("title : " + title)
           expect(title).toEqual('Note List');
         });
       })
