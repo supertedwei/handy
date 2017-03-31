@@ -12,7 +12,6 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SplashPage } from '../pages/splash/splash';
 import { User } from '../common/user';
 
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,8 +20,9 @@ export class MyApp {
 
   showMenu = false;
   rootPage: any = SplashPage;
+  activePage: any;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{id: string, title: string, component: any}>;
 
   versionNumber = 'not available';
 
@@ -33,9 +33,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Note', component: NoteListPage },
-      { title: 'Settings', component: SettingsPage },
+      { id: 'menu_title', title: 'Note', component: NoteListPage },
+      { id: 'menu_settings', title: 'Settings', component: SettingsPage },
     ];
+
+    this.activePage = this.pages[0];
 
   }
 
@@ -45,7 +47,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
 
       if (this.platform.is('cordova')) {
         this.appVersion.getVersionNumber().then((s) => {
@@ -70,11 +71,17 @@ export class MyApp {
         }
       });
 
-
     });
   }
 
   openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+    this.activePage = page;
+  }
+
+  checkActive(page) {
+    return page == this.activePage;
   }
 }

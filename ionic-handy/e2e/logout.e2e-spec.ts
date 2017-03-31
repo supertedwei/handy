@@ -1,6 +1,6 @@
 import { browser, element, by, ElementFinder, ExpectedConditions } from 'protractor';
 
-describe('Logout Test', () => {
+describe('User shall be able to logout system', () => {
 
   beforeEach(() => {
     console.log("beforeEach")
@@ -13,40 +13,40 @@ describe('Logout Test', () => {
     //browser.driver.sleep(5000)
   })
 
-  it('Test Logout', () => {
+  it('Logout', () => {
 
-    // browser.wait(ExpectedConditions.visibilityOf(element(by.css('[menutoggle]'))), 5000).then(() => {
-    //   element(by.css('[menutoggle]')).click().then(() => {
-    //     browser.driver.sleep(1000)
-    //     element(by.id('menu_settings')).click().then(() => {
-    //       browser.driver.sleep(1000)
-    //       element(by.id('btn_logout')).click().then(() => {
-    //       })
-    //     })
-    //   })
-    // })
+    browser.wait(ExpectedConditions.visibilityOf(element(by.css('[menutoggle]'))), 5000).then(() => {
+      element(by.css('[menutoggle]')).click().then(() => {
+        browser.driver.sleep(1000)
+        element(by.id('menu_settings')).click().then(() => {
+          browser.driver.sleep(1000)
+          element(by.id('btn_logout')).click().then(() => {
+          })
+        })
+      })
+    })
 
   })
 
-  it('Login successfully', () => {
+  it('Login', () => {
 
-    // browser.driver.actions()
-    //     .mouseDown(element(by.id('email'))).click()
-    //     .sendKeys("jdwei@yahoo.com")
-    //     .mouseDown(element(by.id('password'))).click()
-    //     .sendKeys("111111")
-    //     .perform()
+    browser.driver.actions()
+        .mouseDown(element(by.id('email'))).click()
+        .sendKeys("jdwei@yahoo.com")
+        .mouseDown(element(by.id('password'))).click()
+        .sendKeys("111111")
+        .perform()
 
-    // element(by.id('btn_login')).click().then(() => {
-    //   console.log("login clicked")
-    //   browser.wait(ExpectedConditions.presenceOf(element(by.css('ion-menu'))), 5000).then(() => {
-    //     console.log("ion-menu found")
-    //     browser.getTitle().then((title) => {
-    //       console.log("title : " + title)
-    //       expect(title).toEqual('Library');
-    //     });
-    //   })
-    // });
+    element(by.id('btn_login')).click().then(() => {
+      console.log("login clicked")
+      browser.wait(ExpectedConditions.presenceOf(element(by.css('ion-menu'))), 5000).then(() => {
+        console.log("ion-menu found")
+        browser.getTitle().then((title) => {
+          console.log("title : " + title)
+          expect(title).toEqual('Note List');
+        });
+      })
+    });
  
   });
 
