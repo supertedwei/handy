@@ -31,8 +31,8 @@ export class NoteUtil {
         return af.database.object(this.getNoteUrl(key))
     }
 
-    static push(af: AngularFire, value: any) {
-        this.getNoteList(af).push(value)
+    static push(af: AngularFire, value: any): string {
+        return this.getNoteList(af).push(value).key
     }
 
     static pushHistory(af: AngularFire, key: string, value: NoteModel) {

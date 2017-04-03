@@ -22,7 +22,8 @@ export class NoteAddPage {
 
   onSaveClicked() {
     console.log("onSaveClicked : " + this.item.title)
-    NoteUtil.push(this.af, this.item)
+    var key = NoteUtil.push(this.af, this.item)
+    NoteUtil.pushHistory(this.af, key, this.item)
     this.navCtrl.pop();
   }
 

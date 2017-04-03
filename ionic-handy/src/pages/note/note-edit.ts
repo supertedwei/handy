@@ -14,7 +14,6 @@ export class NoteEditPage {
   key: string
   itemObservable: FirebaseObjectObservable<any>
   item = new NoteModel()
-  originalItem = new NoteModel()
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public af: AngularFire) {
@@ -24,7 +23,6 @@ export class NoteEditPage {
     this.itemObservable.subscribe(snapshot => {
       console.log('snapshot : ' + JSON.stringify(snapshot));
       this.item = new NoteModel(snapshot)
-      this.originalItem = new NoteModel(snapshot)
     });
   }
 
@@ -35,7 +33,7 @@ export class NoteEditPage {
   onEditClicked() {
     console.log("onEditClicked : " + this.item.title)
     this.itemObservable.set(this.item)
-    NoteUtil.pushHistory(this.af, this.itemObservable.$ref.key, this.originalItem)
+    NoteUtil.pushHistory(this.af, this.itemObservable.$ref.key, this.item)
     this.navCtrl.pop();
   }
 
