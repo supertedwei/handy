@@ -6,6 +6,7 @@ export class NoteUtil {
 
     static urlNoteItemList = "/note_list"
     static urlNoteItemHistory = "/note_history"
+    static urlNoteItemRemoved = "/note_removed"
 
     private static getNoteListUrl(): string {
         return "/note/users/" + User.uid + this.urlNoteItemList
@@ -13,6 +14,22 @@ export class NoteUtil {
 
     private static getNoteHistoryUrl(): string {
         return "/note/users/" + User.uid + this.urlNoteItemHistory
+    }
+
+    private static getNoteRemovedUrl(): string {
+        return "/note/users/" + User.uid + this.urlNoteItemRemoved
+    }
+
+    private static getNoteUrl(key: string): string {
+        return this.getNoteListUrl() + "/" + key
+    }
+
+    private static push2History(af: AngularFire, key: string, value: NoteModel) {
+        this.getNoteHistory(af, key).push(value)
+    }
+
+    private static save2Removed(af: AngularFire, key: string, value: any) {
+        this.getNoteRemoved(af, key).set(value)
     }
 
     static getNoteList(af: AngularFire): FirebaseListObservable<any> {
@@ -23,12 +40,8 @@ export class NoteUtil {
         return af.database.list(this.getNoteHistoryUrl() + "/" + key)
     }
 
-    private static getNoteUrl(key: string): string {
-        return this.getNoteListUrl() + "/" + key
-    }
-
-    private static pushHistory(af: AngularFire, key: string, value: NoteModel) {
-        this.getNoteHistory(af, key).push(value)
+    static getNoteRemoved(af: AngularFire, key: string): FirebaseObjectObservable<any> {
+        return af.database.object(this.getNoteRemovedUrl() + "/" + key)
     }
 
     static getNote(af: AngularFire, key: string): FirebaseObjectObservable<any> {
@@ -37,18 +50,22 @@ export class NoteUtil {
 
     static save(af: AngularFire, value: any): string {
         var key = this.getNoteList(af).push(value).key
-        NoteUtil.pushHistory(af, key, value)
+        NoteUtil.push2History(af, key, value)
         return key
     }
 
     static update(af: AngularFire, key: string, value: any) {
         this.getNote(af, key).set(value)
-        NoteUtil.pushHistory(af, key, value)
+        NoteUtil.push2History(af, key, value)
     }
 
     static remove(af: AngularFire, key: string) {
         this.getNote(af, key).remove()
-        this.getNoteHistory(af, key).remove()
+        this.getNoteHistory(af, key).$ref.once('value', function(snapshot) {
+            NoteUtil.save2Removed(af, key, snapshot.val())
+            NoteUtil.getNoteHistory(af, key).remove()
+        });
+        
     }
 }
 
