@@ -27,16 +27,23 @@ export class NoteUtil {
         return this.getNoteListUrl() + "/" + key
     }
 
+    private static pushHistory(af: AngularFire, key: string, value: NoteModel) {
+        this.getNoteHistory(af, key).push(value)
+    }
+
     static getNote(af: AngularFire, key: string): FirebaseObjectObservable<any> {
         return af.database.object(this.getNoteUrl(key))
     }
 
-    static push(af: AngularFire, value: any): string {
-        return this.getNoteList(af).push(value).key
+    static save(af: AngularFire, value: any): string {
+        var key = this.getNoteList(af).push(value).key
+        NoteUtil.pushHistory(af, key, value)
+        return key
     }
 
-    static pushHistory(af: AngularFire, key: string, value: NoteModel) {
-        this.getNoteHistory(af, key).push(value)
+    static update(af: AngularFire, key: string, value: any) {
+        this.getNote(af, key).set(value)
+        NoteUtil.pushHistory(af, key, value)
     }
 
     static remove(af: AngularFire, key: string) {
@@ -51,11 +58,11 @@ export class NoteModel {
 
     constructor(snapshot?) {
         if (snapshot != null) {
-            this.init(snapshot)
+            this.copy(snapshot)
         }
     }
 
-    private init(snapshot) {
+    copy(snapshot) {
         this.title = snapshot.title
         this.content = snapshot.content
     }

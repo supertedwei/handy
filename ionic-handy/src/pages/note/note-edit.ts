@@ -32,8 +32,7 @@ export class NoteEditPage {
 
   onEditClicked() {
     console.log("onEditClicked : " + this.item.title)
-    this.itemObservable.set(this.item)
-    NoteUtil.pushHistory(this.af, this.itemObservable.$ref.key, this.item)
+    NoteUtil.update(this.af, this.itemObservable.$ref.key, this.item)
     this.navCtrl.pop();
   }
 

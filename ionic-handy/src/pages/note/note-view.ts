@@ -50,4 +50,9 @@ export class NoteViewPage {
     this.showHistory = !this.showHistory
   }
 
+  onRestoreClicked(data) {
+    var noteModel = new NoteModel(data);
+    NoteUtil.update(this.af, this.itemObservable.$ref.key, noteModel)
+  }
+
 }
