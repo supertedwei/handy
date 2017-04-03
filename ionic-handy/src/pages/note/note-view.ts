@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
 import { NoteUtil, NoteModel } from './note-util'
 import { NoteEditPage } from './note-edit';
@@ -14,7 +14,9 @@ export class NoteViewPage {
 
   key: string
   itemObservable: FirebaseObjectObservable<any>
+  itemHistory: FirebaseListObservable<any>
   item = new NoteModel()
+  showHistory = false
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public af: AngularFire) {
@@ -22,10 +24,11 @@ export class NoteViewPage {
     console.log('key : ' + this.key);
     this.itemObservable = NoteUtil.getNote(this.af, this.key)
     this.itemObservable.subscribe(snapshot => {
-      console.log('snapshot : ' + JSON.stringify(snapshot));
+      console.log('snapshot : ' + JSON.stringify(snapshot))
       this.item.title = snapshot.title
       this.item.content = snapshot.content
     });
+    this.itemHistory = NoteUtil.getNoteHistory(this.af, this.key)
   }
 
   ionViewDidLoad() {
@@ -39,8 +42,12 @@ export class NoteViewPage {
   }
 
   onDeleteClicked() {
-    NoteUtil.getNote(this.af, this.key).remove();
+    NoteUtil.remove(this.af, this.key)
     this.navCtrl.pop();
+  }
+
+  onHistoryClicked() {
+    this.showHistory = !this.showHistory
   }
 
 }

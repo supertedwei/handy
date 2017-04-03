@@ -7,6 +7,7 @@ import { AppVersion } from '@ionic-native/app-version';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
+import { ReversePipe } from 'ngx-pipes/src/app/pipes/array/reverse';
 
 import { FirebaseConfig } from './config';
 import { NoteListPage } from '../pages/note/note-list';
@@ -22,6 +23,7 @@ import { ElasticModule } from 'angular2-elastic';
 @NgModule({
   declarations: [
     MyApp,
+    ReversePipe,
     NoteListPage,
     NoteAddPage,
     NoteViewPage,

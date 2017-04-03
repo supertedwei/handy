@@ -30,12 +30,34 @@
       </ion-label>
     </ion-item>
 
-    <ion-item>
-      <button id='btn_delete' ion-button (click)="onDeleteClicked()">
-        Delete
-      </button>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          <button id='btn_history' ion-button (click)='onHistoryClicked()'>
+            History
+          </button>
+        </ion-col>
+        <ion-col col-1>
+          <button id='btn_delete' ion-button (click)='onDeleteClicked()'>
+            Delete
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
   </ion-list>
+
+  <div *ngIf='showHistory'>
+    <ion-card *ngFor="let item of itemHistory | async | reverse">
+      <ion-card-content>
+        <ion-card-header>
+          {{item.title}}
+        </ion-card-header>
+        <ion-card-content>
+          {{item.content}}
+        </ion-card-content>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>
