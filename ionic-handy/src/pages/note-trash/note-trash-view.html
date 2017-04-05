@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Note Trash View</ion-title>
+
+    <ion-buttons end>
+      <button id='btn_undo' ion-button icon-only (click)="onUndoClicked()">
+        <ion-icon name="undo"></ion-icon>
+      </button>
+      <button id='btn_delete' ion-button icon-only (click)="onDeleteClicked()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content id='node_trash_view_page' padding>
+
+  <ion-card *ngFor="let item of itemHistory | async | reverse">
+    <ion-card-content>
+    <ion-card-header>
+        {{item.title}}
+    </ion-card-header>
+    <ion-card-content>
+        {{item.content}}
+    </ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

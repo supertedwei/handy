@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { NoteUtil } from '../note/note-util'
+import { NoteTrashViewPage } from './note-trash-view'
 
 @Component({
   selector: 'page-note-trash-list',
@@ -24,9 +25,9 @@ export class NoteTrashListPage {
 
   onItemClicked(item) {
     console.log('item - ' + JSON.stringify(item));
-    // this.navCtrl.push(NoteViewPage, {
-    //   key: item.$key
-    // });
+    this.navCtrl.push(NoteTrashViewPage, {
+      key: item.$key
+    });
   }
 
 }
