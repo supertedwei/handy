@@ -3,10 +3,13 @@ import { browser, element, by, ElementFinder, ExpectedConditions } from 'protrac
 describe('User can CRUD Note', () => {
 
   var items
+  var historyItems
   var currentCount = 0
+  var currentHistoryCount = 0
 
   beforeEach(() => {
     items = element.all(by.css('ion-item-sliding'));
+    historyItems = element.all(by.css('ion-card'));
   });
 
   afterEach(() => {
@@ -47,6 +50,16 @@ describe('User can CRUD Note', () => {
     browser.wait(ExpectedConditions.visibilityOf(element(by.css('#node_view_page'))), 3000)
   })
 
+  it('Press history button', () => {
+    element(by.css('#btn_history')).click()
+  })
+
+  it('Get History Count', () => {
+    historyItems.count().then(function(count) {
+      currentHistoryCount = count
+    });
+  })
+
   it('Enter Note edit page', () => {
     element(by.css('#btn_edit')).click()
     browser.wait(ExpectedConditions.visibilityOf(element(by.css('#node_edit_page'))), 3000)
@@ -65,6 +78,10 @@ describe('User can CRUD Note', () => {
       items.count().then(function(count) {
         expect(currentCount).toEqual(count)
         currentCount = count
+      });
+      historyItems.count().then(function(count) {
+        expect(currentHistoryCount).toEqual(count - 1)
+        currentHistoryCount = count
       });
     })
   })
