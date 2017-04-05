@@ -7,6 +7,7 @@ import { AppVersion } from '@ionic-native/app-version';
 import { AngularFire } from 'angularfire2';
 
 import { NoteListPage } from '../pages/note/note-list';
+import { NoteTrashListPage } from '../pages/note-trash/note-trash-list'
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
 import { SplashPage } from '../pages/splash/splash';
@@ -33,7 +34,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { id: 'menu_title', title: 'Note', component: NoteListPage },
+      { id: 'menu_note', title: 'Note', component: NoteListPage },
+      { id: 'menu_note_trash', title: 'Note Trash', component: NoteTrashListPage },
       { id: 'menu_settings', title: 'Settings', component: SettingsPage },
     ];
 

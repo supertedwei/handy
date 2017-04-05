@@ -28,7 +28,7 @@ export class NoteViewPage {
       this.item.title = snapshot.title
       this.item.content = snapshot.content
     });
-    this.itemHistory = NoteUtil.getNoteHistory(this.af, this.key)
+    this.itemHistory = NoteUtil.listNoteHistory(this.af, this.key)
   }
 
   ionViewDidLoad() {

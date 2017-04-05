@@ -14,6 +14,7 @@ import { NoteListPage } from '../pages/note/note-list';
 import { NoteAddPage } from '../pages/note/note-add';
 import { NoteViewPage } from '../pages/note/note-view';
 import { NoteEditPage } from '../pages/note/note-edit';
+import { NoteTrashListPage } from '../pages/note-trash/note-trash-list'
 import { EmailSignUpPage } from '../pages/email-sign-up/email-sign-up';
 import { EmailLoginPage } from '../pages/email-login/email-login';
 import { SettingsPage } from '../pages/settings/settings';
@@ -28,6 +29,7 @@ import { ElasticModule } from 'angular2-elastic';
     NoteAddPage,
     NoteViewPage,
     NoteEditPage,
+    NoteTrashListPage,
     EmailSignUpPage,
     EmailLoginPage,
     SettingsPage,
@@ -45,6 +47,7 @@ import { ElasticModule } from 'angular2-elastic';
     NoteAddPage,
     NoteViewPage,
     NoteEditPage,
+    NoteTrashListPage,
     EmailSignUpPage,
     EmailLoginPage,
     SettingsPage,

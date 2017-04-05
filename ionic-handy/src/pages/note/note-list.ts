@@ -19,7 +19,7 @@ export class NoteListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public af: AngularFire) {
-    this.list = NoteUtil.getNoteList(this.af);
+    this.list = NoteUtil.listNote(this.af);
   }
 
   ionViewDidLoad() {
