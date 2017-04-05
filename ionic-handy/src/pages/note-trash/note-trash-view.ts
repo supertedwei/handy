@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-import { NoteUtil, NoteModel } from '../note/note-util'
+import { NoteUtil } from '../note/note-util'
 
 @Component({
   selector: 'page-note-trash-view',
@@ -30,9 +30,9 @@ export class NoteTrashViewPage {
     this.itemHistory = NoteUtil.listNoteHistoryTrash(this.af, this.key)
   }
 
-//   ionViewDidLoad() {
-//     console.log('ionViewDidLoad NoteViewPage');
-//   }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NoteTrashViewPage');
+  }
 
 //   onEditClicked() {
 //     this.navCtrl.push(NoteEditPage, {
@@ -40,14 +40,10 @@ export class NoteTrashViewPage {
 //     });
 //   }
 
-//   onDeleteClicked() {
-//     NoteUtil.remove(this.af, this.key)
-//     this.navCtrl.pop();
-//   }
-
-//   onHistoryClicked() {
-//     this.showHistory = !this.showHistory
-//   }
+  onDeleteClicked() {
+    NoteUtil.removeTrash(this.af, this.key)
+    this.navCtrl.pop();
+  }
 
 //   onRestoreClicked(data) {
 //     var noteModel = new NoteModel(data);

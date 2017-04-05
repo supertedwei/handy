@@ -78,7 +78,11 @@ export class NoteUtil {
             NoteUtil.getNoteHistoryTrash(af, key).set(snapshot.val())
             NoteUtil.listNoteHistory(af, key).remove()
         });
-        
+    }
+
+    static removeTrash(af: AngularFire, key: string) {
+        NoteUtil.getNoteTrash(af, key).remove()
+        NoteUtil.listNoteHistoryTrash(af, key).remove()
     }
 }
 

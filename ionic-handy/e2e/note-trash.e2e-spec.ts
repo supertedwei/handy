@@ -68,4 +68,19 @@ describe('User can operate Note Trash', () => {
       currentCount = count
     })
   })
+
+  it('Enter Note trash view page', () => {
+    element(by.css('ion-item-sliding:first-child')).click()
+    browser.wait(ExpectedConditions.visibilityOf(element(by.css('#node_trash_view_page'))), 3000)
+  })
+
+  it('Delete Note Trash', () => {
+    element(by.id('btn_delete')).click()
+    browser.wait(ExpectedConditions.invisibilityOf(element(by.css('#node_trash_view_page'))), 3000)
+    items.count().then(function(count) {
+      expect(currentCount).toEqual(count + 1)
+      currentCount = count
+    })
+  })
+
 })
