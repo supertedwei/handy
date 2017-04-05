@@ -19,6 +19,7 @@ describe('User can operate Note Trash', () => {
   })
 
   it('Get Count', () => {
+    browser.driver.sleep(1000)
     items.count().then(function(count) {
       currentCount = count
     });
@@ -63,7 +64,8 @@ describe('User can operate Note Trash', () => {
 
   it('Check Count', () => {
     items.count().then(function(count) {
-      expect(currentCount).toEqual(count + 1)
+      expect(currentCount).toEqual(count - 1)
+      currentCount = count
     })
   })
 })
