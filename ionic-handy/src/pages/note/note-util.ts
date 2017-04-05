@@ -18,10 +18,6 @@ export class NoteUtil {
         return "/note/users/" + User.uid + NoteUtil.UrlNoteHistory
     }
 
-    // private static getNoteTrashUrl(): string {
-    //     return "/note/users/" + User.uid + NoteUtil.UrlNoteTrash
-    // }
-
     private static getNoteTrashUrl(): string {
         return "/note/users/" + User.uid + NoteUtil.UrlNoteTrash
     }
@@ -38,6 +34,10 @@ export class NoteUtil {
         return af.database.list(this.getNoteUrl())
     }
 
+    static getNoteHistory(af: AngularFire, noteKey: string): FirebaseObjectObservable<any> {
+        return af.database.object(this.getNoteHistoryUrl() + "/" + noteKey)
+    }
+
     static listNoteHistory(af: AngularFire, noteKey: string): FirebaseListObservable<any> {
         return af.database.list(this.getNoteHistoryUrl() + "/" + noteKey)
     }
@@ -50,12 +50,12 @@ export class NoteUtil {
         return af.database.list(NoteUtil.getNoteTrashUrl())
     }
 
-    static listNoteHistoryTrash(af: AngularFire, noteKey: string): FirebaseListObservable<any> {
-        return af.database.list(this.getNoteHistoryTrashUrl() + "/" + noteKey)
-    }
-
     static getNoteHistoryTrash(af: AngularFire, noteKey: string): FirebaseObjectObservable<any> {
         return af.database.object(this.getNoteHistoryTrashUrl() + "/" + noteKey)
+    }
+
+    static listNoteHistoryTrash(af: AngularFire, noteKey: string): FirebaseListObservable<any> {
+        return af.database.list(this.getNoteHistoryTrashUrl() + "/" + noteKey)
     }
 
     static save(af: AngularFire, value: any): string {
@@ -76,13 +76,24 @@ export class NoteUtil {
         });
         NoteUtil.listNoteHistory(af, key).$ref.once('value', function(snapshot) {
             NoteUtil.getNoteHistoryTrash(af, key).set(snapshot.val())
-            NoteUtil.listNoteHistory(af, key).remove()
+            NoteUtil.getNoteHistory(af, key).remove()
         });
     }
 
     static removeTrash(af: AngularFire, key: string) {
         NoteUtil.getNoteTrash(af, key).remove()
-        NoteUtil.listNoteHistoryTrash(af, key).remove()
+        NoteUtil.getNoteHistoryTrash(af, key).remove()
+    }
+
+    static undo(af: AngularFire, key: string) {
+        NoteUtil.getNoteTrash(af, key).$ref.once('value', function(snapshot) {
+            NoteUtil.getNote(af, key).set(snapshot.val())
+            NoteUtil.getNoteTrash(af, key).remove()
+        });
+        NoteUtil.listNoteHistoryTrash(af, key).$ref.once('value', function(snapshot) {
+            NoteUtil.getNoteHistory(af, key).set(snapshot.val())
+            NoteUtil.getNoteHistoryTrash(af, key).remove()
+        });
     }
 }
 
