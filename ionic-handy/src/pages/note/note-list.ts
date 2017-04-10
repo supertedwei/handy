@@ -38,7 +38,6 @@ export class NoteListPage {
   }
 
   onDeleteClicked(item) {
-    NoteUtil.getNote(this.af, item.$key).remove();
+    NoteUtil.remove(this.af, item.$key)
   }
-
 }
